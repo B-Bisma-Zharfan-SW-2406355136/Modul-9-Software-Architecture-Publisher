@@ -12,4 +12,11 @@
     - localhost:5672: Menunjukkan alamat host dan port di mana broker RabbitMQ berjalan.
     Karena URL ini sama dengan yang digunakan dalam program subscriber, itu berarti bahwa kedua program (publisher dan subscriber) terhubung ke broker RabbitMQ yang sama. Dengan demikian, pesan yang dikirim oleh publisher akan dapat diterima oleh subscriber yang terhubung ke broker tersebut.
     </li>
+    <br>
+   
+
 </ol>
+
+![RabbitMQ 1](assets/images/RabbitMQ%201.png)
+
+![RabbitMQ 2](assets/images/RabbitMQ%202.png)
