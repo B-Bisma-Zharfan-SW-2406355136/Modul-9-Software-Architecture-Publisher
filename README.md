@@ -32,3 +32,12 @@ Setelah menjalankan `cargo run` pada bagian **publisher**, berikut adalah apa ya
 4. **Hasil Akhir**: Konsol subscriber menampilkan log pesan yang diterima secara berurutan, lengkap dengan detail `user_id` dan `user_name` yang dikirimkan oleh publisher tadi.
 
 Hal ini membuktikan bahwa sistem komunikasi asinkron antar layanan telah berjalan dengan baik.
+
+![Spike](assets/images/RabbitMQ_spike.png)
+
+Pada Dashboard Management RabbitMQ, khususnya pada grafik **Message Rates**, terlihat adanya beberapa **lonjakan (spikes)**. Berikut adalah penjelasannya:
+
+* **Representasi Spike**: Setiap lonjakan pada grafik berbanding lurus dengan eksekusi program `publisher`.
+* **Penyebab**: Ketika perintah `cargo run` dijalankan pada terminal publisher, program mengirimkan sejumlah pesan sekaligus ke broker. Kenaikan aktivitas pesan per detik yang tiba-tiba inilah yang menciptakan "spike" pada grafik.
+* **Siklus Pesan**: Titik tertinggi lonjakan menunjukkan momen saat pesan **dipublikasikan (published)** ke exchange, sedangkan kemiringan grafis yang menurun menunjukkan bahwa pesan tersebut telah berhasil **diteruskan (delivered)** atau **dikonfirmasi (acknowledged)** oleh subscriber.
+* **Eksekusi Berulang**: Jika publisher dijalankan berulang kali, maka akan muncul beberapa lonjakan baru, yang mengonfirmasi bahwa broker bekerja secara aktif menangani setiap permintaan pesan yang masuk secara real-time.
